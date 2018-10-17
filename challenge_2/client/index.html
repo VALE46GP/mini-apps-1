@@ -8,14 +8,14 @@
   <h1>MiniApp2</h1>
   <div>
     <h3>JSON</h3>
-    <form method="POST" action="/upload_json">
+    <form method="POST" action="/upload_json" target="formframe">
       <textarea cols="80" rows="12" type="json" id="upload_json" name="json_data"></textarea>
       <button>Convert</button>
     </form>
   </div>
   <div>
     <h3>CSV</h3>
-    <textarea id="output" cols="80" rows="12" readonly></textarea>
+    <iframe name="formframe" width="500" height="150"></iframe>
   </div>
 </body>
 </html>
