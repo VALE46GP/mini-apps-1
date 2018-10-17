@@ -1,6 +1,6 @@
 
 var convertJSONtoCSV = function(jsonData) {
-  return jsonData;
+  return 'CSVified(' + jsonData.json_data + ')';
 };
 
 module.exports.convertJSONtoCSV = convertJSONtoCSV;

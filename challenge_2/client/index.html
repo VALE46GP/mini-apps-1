@@ -6,9 +6,16 @@
 </head>
 <body>
   <h1>MiniApp2</h1>
-  <form method="POST" action="/upload_json">
-    <input type="json" id="upload_json" name="jason_data"/>
-    <button>Convert</button>
-  </form>
+  <div>
+    <h3>JSON</h3>
+    <form method="POST" action="/upload_json">
+      <textarea cols="80" rows="12" type="json" id="upload_json" name="json_data"></textarea>
+      <button>Convert</button>
+    </form>
+  </div>
+  <div>
+    <h3>CSV</h3>
+    <textarea id="output" cols="80" rows="12" readonly></textarea>
+  </div>
 </body>
 </html>
