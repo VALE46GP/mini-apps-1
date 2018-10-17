@@ -8,7 +8,7 @@ CREATE TABLE customer_info (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(70) NOT NULL,
   email VARCHAR(70) NOT NULL,
-  password VARCHAR(16) NOT NULL
+  pw VARCHAR(16) NOT NULL
 );
 
 CREATE TABLE shipping_info (

@@ -2,7 +2,7 @@
   "name": "challenge_3",
   "version": "1.0.0",
   "description": "MultiStep Checkout Experience",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,18 +12,22 @@
   "author": "Eric Callari",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
     "babel": "^6.23.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "mysql": "^2.16.0",
     "jquery": "^2.2.1",
+    "mysql": "^2.16.0",
+    "path": "^0.12.7",
+    "react": "^16.5.2",
     "reactjs": "^1.0.0",
-    "xcode": "^1.0.0",
-    "underscore": "^1.9.1"
+    "react-dom": "^16.5.2",
+    "underscore": "^1.9.1",
+    "xcode": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-plugin-react": "1.0.0",
-    "babel-preset-react": "^6.5.0"
+    "babel-preset-react": "^6.5.0",
+    "@babel/preset-react": "^7.0.0"
   }
 }

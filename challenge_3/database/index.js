@@ -17,9 +17,9 @@ var getId = function(callback) {
 };
 
 // write function to add customer_info
-var insertCustomer = function(first_name, last_name, email, password, callback) {
-  const query = 'INSERT INTO customer_info (first_name, last_name, email, password) VALUES (?, ?, ?)';
-  connection.query(query, [first_name, last_name, email, password], (err, results, fields) => {
+var insertCustomer = function(first_name, last_name, email, pw, callback) {
+  const query = 'INSERT INTO customer_info (first_name, last_name, email, pw) VALUES (?, ?, ?)';
+  connection.query(query, [first_name, last_name, email, pw], (err, results, fields) => {
     callback(err, null);
   });
 };
@@ -44,3 +44,7 @@ var insertPayment = function(id, card_number, expiration, cvv, zip) {
 
 
 // export all functions
+module.exports.getId = getId;
+module.exports.insertCustomer = insertCustomer;
+module.exports.insertShipping = insertShipping;
+module.exports.insertPayment = insertPayment;
