@@ -12,28 +12,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 var upload = multer({dest: 'uploads/'});
 
-
 var jsonData = '>>>>>>>>>> asynch <<<<<<<<<<<<';
-
-
+//
 // app.post('/upload', upload.single('json'), (req, res) => {
 //   console.log('requestBody: ', request.file.path);
-//
 //   fs.readFile(req.file.path, 'utf-8', (err, data) => {
 //     if (err) {
-//       console.log(err);
 //       res.status(500).send(err);
 //     } else {
-//       console.log(JSON.parse(data));
-//       var csvContent = appMethods.csvConverter(JSON.parse(data));
-//       console.log(csvContent);
-//       res.status(201).send(csvContent);
+//       var csv = convert.convertJSONtoCSV(JSON.parse(data.toString()));
+//       console.log(csv);
+//       res.status(201).send(csv);
 //     }
 //   })
 // });
 
 app.post('/upload_json', (req, res) => {
-  // console.log('req.body =>>>>>>>>>>> ', req.body);
     jsonData = convert.convertJSONtoCSV(req.body.json_data);
     res.status(201).send(jsonData);
 });
