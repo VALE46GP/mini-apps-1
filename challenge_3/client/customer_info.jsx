@@ -7,6 +7,7 @@ class Customer_info extends React.Component {
     return (
       <div>
         <h3>Customer Info</h3>
+
         <button id="checkout_next" onClick={this.props.setInputField}>Next</button>
       </div>
     );

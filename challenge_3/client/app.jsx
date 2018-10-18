@@ -1,19 +1,18 @@
-import Customer_info from './customer_info.js';
-import Cart from './cart.js';
-import Shipping_info from './shipping_info.js';
-import Payment_info from './payment_info.js';
 
 class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      allForms: ['cart', 'customer', 'shipping', 'payment'],
-      index: 0
+      index: 0,
+      name: '',
+      email: ''
     };
     this.setInputField.bind(this);
   }
 
+  // increment index to switch form
   setInputField(e) {
+    e.preventDefault();
     if (this.state.index === 3) {
       alert('Purchase Complete! Hey, Thanks!!')
       this.setState({index: 0})
@@ -22,6 +21,7 @@ class App extends React.Component {
     }
   }
 
+  // determine which form to render based on this.state.index
   render() {
     var inputField;
     switch (this.state.index) {
@@ -43,8 +43,81 @@ class App extends React.Component {
 
     return (
       <div>
-        <h3>Hey cool, an App Component</h3>
+        <h3>App Component</h3>
         {inputField}
+      </div>
+    );
+  }
+}
+
+// Cart /////////////////////////////////////////////////////////////////////////////
+const Cart = (props) => (
+  <div>
+    <h3>My Cart</h3>
+    <button onClick={props.setInputField}>Checkout</button>
+  </div>
+);
+
+// class Cart extends React.Component {
+//   constructor(props){
+//     super(props);
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <h3>My Cart</h3>
+//         <input type="text" value={this.state.name} onChange={this.changeValue.bind(this)}/>
+//         <button onClick={this.setInputField}>Checkout</button>
+//       </div>
+//     );
+//   }
+// }
+
+// Customer_info ////////////////////////////////////////////////////////////////////
+class Customer_info extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      pw: ''
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h3>Customer Info</h3>
+        <button onClick={this.props.setInputField}>Checkout</button>
+      </div>
+    );
+  }
+}
+
+// Shipping_info ////////////////////////////////////////////////////////////////////
+class Shipping_info extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Shipping Info</h3>
+        <button onClick={this.props.setInputField}>Checkout</button>
+      </div>
+    );
+  }
+}
+
+// Payment_info /////////////////////////////////////////////////////////////////////
+class Payment_info extends React.Component {
+  constructor(props){
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h3>Payment Info</h3>
+        <button onClick={this.props.setInputField}>Checkout</button>
       </div>
     );
   }
