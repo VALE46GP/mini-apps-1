@@ -10,10 +10,7 @@ class App extends React.Component {
 
   // increment index to switch form
   setInputField(updates) {
-  //   if (this.state.index !== 0) {
-  //     // update database with new values
-  //     console.log(updates);
-  //   }
+    console.log(updates);
     if (this.state.index === 3) {
       alert('Purchase Complete\nHey, thanks!!');
       this.setState({index: 0})
@@ -69,17 +66,31 @@ class Customer_info extends React.Component {
       email: '',
       pw: ''
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.handleSubmit(this.state);
-  }
+  // handleSubmit() {
+  //   this.props.handleSubmit(this.state);
+  // }
 
   handleInputChange(e) {
     this.setState({
       [e.target.id]: e.target.value
     });
+  }
+
+  // update db & invoke setInputField (the cb from App)
+  submit() {
+    console.log(this.state);
+    $.ajax('/customer_info', {
+      method: 'POST',
+      contentType: 'application/json',
+      data: JSON.stringify(this.state),     // this.state is undefined!!
+      success: (data) => {
+        this.props.setInputField();
+      }
+    });
+
   }
 
   render() {
@@ -110,7 +121,7 @@ class Customer_info extends React.Component {
           placeholder="password"
           onChange={this.handleInputChange.bind(this)}
         />
-        <button onClick={this.props.setInputField}>Checkout</button>
+        <button onClick={this.submit}>Checkout</button>
       </div>
     );
   }
@@ -128,12 +139,12 @@ class Shipping_info extends React.Component {
       ship_zip: '',
       phone: '',
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.handleSubmit(this.state);
-  }
+  // handleSubmit() {
+  //   this.props.handleSubmit(this.state);
+  // }
 
   handleInputChange(e) {
     this.setState({
@@ -197,12 +208,12 @@ class Payment_info extends React.Component {
       cvv: '',
       bill_zip: '',
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-    this.props.handleSubmit(this.state);
-  }
+  // handleSubmit() {
+  //   this.props.handleSubmit(this.state);
+  // }
 
   handleInputChange(e) {
     this.setState({
@@ -245,3 +256,17 @@ class Payment_info extends React.Component {
 }
 
 export default App;
+/*
+$.ajax('/customer_info', {
+  method: 'POST',
+  contentType: 'application/json',
+  data: JSON.stringify({
+    item: this.state.currItem,
+    quantity: this.state.currQuantity
+  }),
+  success: (data) => {
+    this.setState({currItem: '', currQuantity: ''});
+    this.props.onsuccess();
+  }
+});
+ */
