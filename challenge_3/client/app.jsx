@@ -3,18 +3,19 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      index: 0,
-      name: '',
-      email: ''
+      index: 0
     };
     this.setInputField.bind(this);
   }
 
   // increment index to switch form
-  setInputField(e) {
-    e.preventDefault();
+  setInputField(updates) {
+  //   if (this.state.index !== 0) {
+  //     // update database with new values
+  //     console.log(updates);
+  //   }
     if (this.state.index === 3) {
-      alert('Purchase Complete! Hey, Thanks!!')
+      alert('Purchase Complete\nHey, thanks!!');
       this.setState({index: 0})
     } else {
       this.setState({index: this.state.index + 1});
@@ -58,35 +59,57 @@ const Cart = (props) => (
   </div>
 );
 
-// class Cart extends React.Component {
-//   constructor(props){
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <div>
-//         <h3>My Cart</h3>
-//         <input type="text" value={this.state.name} onChange={this.changeValue.bind(this)}/>
-//         <button onClick={this.setInputField}>Checkout</button>
-//       </div>
-//     );
-//   }
-// }
-
 // Customer_info ////////////////////////////////////////////////////////////////////
 class Customer_info extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      name: '',
+      first_name: '',
+      last_name: '',
       email: '',
       pw: ''
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(e) {
+    this.props.handleSubmit(this.state);
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
   render() {
     return (
       <div>
         <h3>Customer Info</h3>
+        <input
+          id="first_name"
+          type="text"
+          placeholder="first name"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="last_name"
+          type="text"
+          placeholder="last name"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="email"
+          type="text"
+          placeholder="email"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="pw"
+          type="text"
+          placeholder="password"
+          onChange={this.handleInputChange.bind(this)}
+        />
         <button onClick={this.props.setInputField}>Checkout</button>
       </div>
     );
@@ -97,11 +120,67 @@ class Customer_info extends React.Component {
 class Shipping_info extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      ship_zip: '',
+      phone: '',
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(e) {
+    this.props.handleSubmit(this.state);
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
   render() {
     return (
       <div>
         <h3>Shipping Info</h3>
+        <input
+          id="line1"
+          type="text"
+          placeholder="address -- line 1"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="line2"
+          type="text"
+          placeholder="address -- line 2"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="city"
+          type="text"
+          placeholder="city"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="state"
+          type="text"
+          placeholder="state"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="ship_zip"
+          type="text"
+          placeholder="zip code"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="phone"
+          type="text"
+          placeholder="phone"
+          onChange={this.handleInputChange.bind(this)}
+        />
         <button onClick={this.props.setInputField}>Checkout</button>
       </div>
     );
@@ -112,11 +191,53 @@ class Shipping_info extends React.Component {
 class Payment_info extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      card_number: '',
+      exp: '',
+      cvv: '',
+      bill_zip: '',
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  handleSubmit(e) {
+    this.props.handleSubmit(this.state);
+  }
+
+  handleInputChange(e) {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
   render() {
     return (
       <div>
         <h3>Payment Info</h3>
+        <input
+          id="card_number"
+          type="text"
+          placeholder="card number"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="exp"
+          type="text"
+          placeholder="expiration date"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="cvv"
+          type="text"
+          placeholder="cvv"
+          onChange={this.handleInputChange.bind(this)}
+        />
+        <input
+          id="bill_zip"
+          type="text"
+          placeholder="zip code"
+          onChange={this.handleInputChange.bind(this)}
+        />
         <button onClick={this.props.setInputField}>Checkout</button>
       </div>
     );

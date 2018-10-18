@@ -6,7 +6,8 @@ USE cutomer_data;
 
 CREATE TABLE customer_info (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(70) NOT NULL,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
   email VARCHAR(70) NOT NULL,
   pw VARCHAR(16) NOT NULL
 );
@@ -17,7 +18,7 @@ CREATE TABLE shipping_info (
   line2 VARCHAR(80),
   city VARCHAR(30) NOT NULL,
   state VARCHAR(20) NOT NULL,
-  zip SMALLINT NOT NULL
+  ship_zip SMALLINT NOT NULL
 );
 
 CREATE TABLE payment_info (
@@ -25,7 +26,7 @@ CREATE TABLE payment_info (
   card_number INT NOT NULL,
   expiration VARCHAR(30) NOT NULL,
   cvv TINYINT NOT NULL,
-  zip SMALLINT NOT NULL
+  bill_zip SMALLINT NOT NULL
 );
 
 -- insert 3 test values
