@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-app.use(bodyParser.jason());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 

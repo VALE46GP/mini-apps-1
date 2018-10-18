@@ -11,6 +11,7 @@
   "author": "Eric Callari",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "nodeman": "^1.1.2",
